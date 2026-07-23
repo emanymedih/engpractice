@@ -1,0 +1,20 @@
+WORDMEMO → GITHUB PAGES
+
+1. GitHub → New repository.
+2. Название: wordmemo
+3. Если у вас GitHub Free, для максимально простого GitHub Pages сделайте репозиторий Public.
+4. Откройте созданный репозиторий → Add file → Upload files.
+5. Перетащите ВСЕ файлы и папку icons из этой директории. Не загружайте сам ZIP как единственный файл.
+6. Commit changes.
+7. Settings → Pages.
+8. Source: Deploy from a branch.
+9. Branch: main; Folder: /(root).
+10. Save.
+11. После публикации откройте URL в Safari на iPhone.
+12. Safari → Поделиться → На экран Домой.
+
+ВАЖНО:
+- index.html должен быть в корне репозитория.
+- manifest.webmanifest, sw.js и папка icons должны лежать рядом с index.html.
+- Для PWA нужен HTTPS; GitHub Pages его предоставляет.
+- Прогресс сохраняется локально на конкретном устройстве/в Safari. Для переноса используйте Export/Import в WordMemo.
