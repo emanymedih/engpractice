@@ -5,6 +5,7 @@ const read = p => fs.readFileSync(p, 'utf8');
 const core = read('app-core.html');
 const index = read('index.html');
 const runtime = read('v11.js');
+const auditFixes = read('v11.1-fixes.js');
 const sw = read('sw.js');
 
 function extractWords(html) {
@@ -43,12 +44,16 @@ for (const w of words) {
 
 assert.match(index, /\.\/app-core\.html/, 'index must load same-origin app core');
 assert.match(index, /\.\/v11\.js/, 'index must load v11 runtime');
+assert.match(index, /\.\/v11\.1-fixes\.js/, 'index must load v11.1 audit fixes');
 assert.match(index, /\.\/v11\.css/, 'index must load v11 styles');
 assert.ok(!index.includes('raw.githubusercontent.com'), 'index must not depend on Raw GitHub');
 assert.match(sw, /app-core\.html/, 'service worker must cache app core');
 assert.match(sw, /v11\.js/, 'service worker must cache v11 runtime');
+assert.match(sw, /v11\.1-fixes\.js/, 'service worker must cache v11.1 fixes');
 assert.match(runtime, /indexedDB/, 'runtime must keep IndexedDB fallback');
-assert.match(runtime, /buildSession=function/, 'runtime must override session scheduler');
 assert.match(runtime, /teacherModeFor=function/, 'runtime must adapt exercise type');
+assert.match(auditFixes, /buildSession\s*=\s*function/, 'audit patch must control session scheduler');
+assert.match(auditFixes, /wmLocalDayKey/, 'audit patch must use local calendar dates');
+assert.ok(!auditFixes.includes('изнаружи'), 'known copy typo must not return');
 
-console.log(`WordMemo smoke OK: ${words.length} cards, offline assets and v11 runtime validated.`);
+console.log(`WordMemo smoke OK: ${words.length} cards, same-origin boot, offline assets and v11.1 audit fixes validated.`);
