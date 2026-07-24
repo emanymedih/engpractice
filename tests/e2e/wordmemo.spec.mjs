@@ -94,6 +94,6 @@ test('mobile navigation is touch-friendly and exposes light theme', async ({ pag
 test('diagnostics reports application assets and browser storage without hard failures', async ({ page }) => {
   await page.goto('/diagnostics.html');
   await expect(page.getByRole('heading', { name: /WordMemo · диагностика/ })).toBeVisible();
-  await expect(page.locator('#checks .row')).toHaveCount(12, { timeout: 10_000 });
+  await expect(page.locator('#checks .row')).toHaveCount(13, { timeout: 10_000 });
   await expect(page.locator('#checks .bad')).toHaveCount(0);
 });
