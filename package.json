@@ -1,0 +1,13 @@
+{
+  "name": "wordmemo-1000",
+  "private": true,
+  "version": "11.1.0",
+  "description": "Offline-first A2-B1 English vocabulary PWA",
+  "devDependencies": {
+    "@playwright/test": "1.59.1"
+  },
+  "scripts": {
+    "test:smoke": "node tests/smoke.mjs",
+    "test:e2e": "playwright test"
+  }
+}
