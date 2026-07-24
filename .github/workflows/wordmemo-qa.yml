@@ -16,6 +16,8 @@ jobs:
         with:
           node-version: '22'
       - name: JavaScript syntax
-        run: node --check v11.js
+        run: |
+          node --check v11.js
+          node --check v11.1-fixes.js
       - name: Smoke test
         run: node tests/smoke.mjs
