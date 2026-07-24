@@ -50,6 +50,7 @@ assert.ok(!index.includes('raw.githubusercontent.com'), 'index must not depend o
 assert.match(sw, /app-core\.html/, 'service worker must cache app core');
 assert.match(sw, /v11\.js/, 'service worker must cache v11 runtime');
 assert.match(sw, /v11\.1-fixes\.js/, 'service worker must cache v11.1 fixes');
+assert.ok(!sw.includes("||caches.match('./app-core.html')"), 'service worker must not return HTML for missing JS/CSS assets');
 assert.match(runtime, /indexedDB/, 'runtime must keep IndexedDB fallback');
 assert.match(runtime, /teacherModeFor=function/, 'runtime must adapt exercise type');
 assert.match(auditFixes, /buildSession\s*=\s*function/, 'audit patch must control session scheduler');
